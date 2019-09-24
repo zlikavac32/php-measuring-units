@@ -1,0 +1,5 @@
+suites:
+    project_stats:
+        namespace: Zlikavac32\UnitsOfMeasure
+        psr4_prefix: Zlikavac32\UnitsOfMeasure
+formatter.name: dot

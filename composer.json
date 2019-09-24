@@ -1,0 +1,31 @@
+{
+    "name": "zlikavac32/php-measure-units",
+    "description": "Measure units implementation for PHP",
+    "keywords": ["measure unit", "measuring unit", "conversion", "units", "measurements"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marijan Šuflaj",
+            "email": "msufflaj32@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3",
+        "zlikavac32/php-enum": "^2.0",
+        "php-ds/php-ds": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zlikavac32\\UnitsOfMeasure\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4",
+        "phpspec/phpspec": "^6.0"
+    }
+}
