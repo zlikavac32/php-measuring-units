@@ -49,7 +49,7 @@ It's important to note that this library does not yet implement the concept of d
 The recommended installation is through Composer.
 
 ```
-composer require zlikavac32/units-of-measure
+composer require zlikavac32/php-measure-units
 ```
 
 ## Configuration
