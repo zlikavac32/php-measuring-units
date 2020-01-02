@@ -10,10 +10,7 @@ use Throwable;
 class ParseException extends RuntimeException
 {
 
-    /**
-     * @var string
-     */
-    private $measureUnit;
+    private string $measureUnit;
 
     public function __construct(string $measureUnit, Throwable $previous = null)
     {

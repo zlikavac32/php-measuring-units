@@ -13,13 +13,13 @@ final class MapUnitNormalizer implements Normalizer
 {
 
     /**
-     * @var Map|Transition[]
+     * @var Transition[]
      */
-    private $mapOfUnits;
+    private Map $mapOfUnits;
     /**
-     * @var Set|string[]
+     * @var string[]
      */
-    private $baseUnits;
+    private Set $baseUnits;
 
     /**
      * @param Map|Transition[] $mapOfUnits

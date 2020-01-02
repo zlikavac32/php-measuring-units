@@ -12,22 +12,13 @@ use LogicException;
 final class Decimal
 {
 
-    /**
-     * @var float
-     */
-    private $mantisa;
-    /**
-     * @var int
-     */
-    private $exponent;
-    /**
-     * @var float
-     */
-    private $asFloat;
-    /**
-     * @var int
-     */
-    private $sign;
+    private float $mantisa;
+
+    private int $exponent;
+
+    private float $asFloat;
+
+    private int $sign;
 
     public function __construct(float $mantisa, int $exponent = 0)
     {

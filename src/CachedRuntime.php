@@ -7,14 +7,11 @@ namespace Zlikavac32\UnitsOfMeasure;
 class CachedRuntime implements Runtime
 {
 
-    /**
-     * @var Runtime
-     */
-    private $runtime;
+    private Runtime $runtime;
     /**
      * @var MeasureUnit[]
      */
-    private $cache = [];
+    private array $cache = [];
 
     public function __construct(Runtime $runtime)
     {

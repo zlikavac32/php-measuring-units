@@ -7,22 +7,13 @@ namespace Zlikavac32\UnitsOfMeasure;
 class NumberFormatQuantityFormatter implements QuantityFormatter
 {
 
-    /**
-     * @var MeasureUnitFormatter
-     */
-    private $unitFormatter;
-    /**
-     * @var int
-     */
-    private $decimals;
-    /**
-     * @var string
-     */
-    private $decimalPoint;
-    /**
-     * @var string
-     */
-    private $thousandSeparator;
+    private MeasureUnitFormatter $unitFormatter;
+
+    private int $decimals;
+
+    private string $decimalPoint;
+
+    private string $thousandSeparator;
 
     public function __construct(
         MeasureUnitFormatter $unitFormatter, int $decimals = 2, string $decimalPoint = '.',

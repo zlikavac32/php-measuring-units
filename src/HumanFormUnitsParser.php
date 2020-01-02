@@ -46,7 +46,7 @@ $
 #x
 REGEX;
 
-    private $regexMeasureUnit;
+    private string $regexMeasureUnit;
 
     public function __construct(array $siUnits, array $nonSiUnits)
     {

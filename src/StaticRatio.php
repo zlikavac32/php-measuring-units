@@ -9,14 +9,9 @@ use LogicException;
 final class StaticRatio implements Ratio
 {
 
-    /**
-     * @var Decimal
-     */
-    private $ratio;
-    /**
-     * @var bool
-     */
-    private $invert;
+    private Decimal $ratio;
+
+    private bool $invert;
 
     public function __construct(Decimal $ratio, bool $invert)
     {

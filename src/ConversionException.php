@@ -10,14 +10,9 @@ use Throwable;
 class ConversionException extends RuntimeException
 {
 
-    /**
-     * @var MeasureUnit
-     */
-    private $from;
-    /**
-     * @var MeasureUnit
-     */
-    private $to;
+    private MeasureUnit $from;
+
+    private MeasureUnit $to;
 
     public function __construct(MeasureUnit $from, MeasureUnit $to, Throwable $previous = null)
     {

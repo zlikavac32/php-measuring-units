@@ -12,7 +12,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "zlikavac32/php-enum": "^2.0",
         "php-ds/php-ds": "^1.2"
     },
