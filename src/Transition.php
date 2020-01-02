@@ -7,14 +7,11 @@ namespace Zlikavac32\UnitsOfMeasure;
 final class Transition
 {
 
-    /**
-     * @var Decimal
-     */
-    private $ratio;
+    private Decimal $ratio;
     /**
      * @var TransitionUnit[]
      */
-    private $transitionUnits;
+    private array $transitionUnits;
 
     public function __construct(Decimal $ratio, TransitionUnit ...$transitionUnits)
     {

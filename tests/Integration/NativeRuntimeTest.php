@@ -20,10 +20,7 @@ use Zlikavac32\UnitsOfMeasure\TransitionUnit;
 class NativeRuntimeTest extends TestCase
 {
 
-    /**
-     * @var Runtime
-     */
-    private $unitsOfMeasure;
+    private ?Runtime $unitsOfMeasure;
 
     protected function setUp(): void
     {

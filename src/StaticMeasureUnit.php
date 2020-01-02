@@ -9,34 +9,25 @@ use LogicException;
 final class StaticMeasureUnit implements NormalizedMeasureUnit
 {
 
+    private Decimal $factor;
     /**
-     * @var Decimal
+     * @var MeasureUnitComponent[]
      */
-    private $factor;
-    /**
-     * @var array|MeasureUnitComponent[]
-     */
-    private $components;
-    /**
-     * @var Decimal
-     */
-    private $normalizedFactor;
-    /**
-     * @var array|NormalizedMeasureUnitComponent[]
-     */
-    private $normalizedComponents;
+    private array $components;
+
+    private Decimal $normalizedFactor;
     /**
      * @var NormalizedMeasureUnitComponent[]
      */
-    private $normalizedComponentsMap;
+    private array $normalizedComponents;
     /**
-     * @var Runtime
+     * @var NormalizedMeasureUnitComponent[]
      */
-    private $runtime;
-    /**
-     * @var Ratio
-     */
-    private $ratioOfOne;
+    private array $normalizedComponentsMap;
+
+    private Runtime $runtime;
+
+    private Ratio $ratioOfOne;
 
     /**
      * @param MeasureUnitComponent[] $components

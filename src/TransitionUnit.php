@@ -7,18 +7,11 @@ namespace Zlikavac32\UnitsOfMeasure;
 final class TransitionUnit
 {
 
-    /**
-     * @var string
-     */
-    private $name;
-    /**
-     * @var int
-     */
-    private $exponent;
-    /**
-     * @var MetricPrefix
-     */
-    private $metricPrefix;
+    private string $name;
+
+    private int $exponent;
+
+    private MetricPrefix $metricPrefix;
 
     public function __construct(string $name, int $exponent = 1, ?MetricPrefix $metricPrefix = null)
     {

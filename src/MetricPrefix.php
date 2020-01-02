@@ -33,22 +33,15 @@ use Zlikavac32\Enum\Enum;
 abstract class MetricPrefix extends Enum
 {
 
-    /**
-     * @var int
-     */
-    private $exponent;
-    /**
-     * @var string
-     */
-    private $symbol;
+    private int $exponent;
+
+    private string $symbol;
     /**
      * @var MetricPrefix[]
      */
-    private static $symbolToElementMap = [];
-    /**
-     * @var Decimal
-     */
-    private $normalizedFactor;
+    private static array $symbolToElementMap = [];
+
+    private Decimal $normalizedFactor;
 
     public function __construct(string $symbol, int $exponent)
     {

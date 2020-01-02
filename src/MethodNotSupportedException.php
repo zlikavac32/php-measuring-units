@@ -10,14 +10,10 @@ use Throwable;
 class MethodNotSupportedException extends LogicException
 {
 
-    /**
-     * @var string
-     */
-    private $class;
-    /**
-     * @var string
-     */
-    private $method;
+
+    private string $class;
+
+    private string $method;
 
     public function __construct(string $method, Throwable $previous = null)
     {

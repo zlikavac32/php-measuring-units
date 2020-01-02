@@ -25,10 +25,7 @@ use Zlikavac32\UnitsOfMeasure\TransitionUnit;
 class ConversionTest extends TestCase
 {
 
-    /**
-     * @var Runtime
-     */
-    private $unitsOfMeasure;
+    private Runtime $unitsOfMeasure;
 
     protected function setUp(): void
     {

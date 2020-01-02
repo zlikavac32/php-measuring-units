@@ -9,14 +9,9 @@ use LogicException;
 final class NativeRuntime implements Runtime
 {
 
-    /**
-     * @var Parser
-     */
-    private $parser;
-    /**
-     * @var Normalizer
-     */
-    private $normalizer;
+    private Parser $parser;
+
+    private Normalizer $normalizer;
 
     public function __construct(Parser $parser, Normalizer $normalizer)
     {

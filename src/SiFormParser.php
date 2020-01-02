@@ -23,10 +23,7 @@ $
 #x
 REGEX;
 
-    /**
-     * @var string
-     */
-    private $regex;
+    private string $regex;
 
     public function __construct(array $siUnits, array $nonSiUnits)
     {

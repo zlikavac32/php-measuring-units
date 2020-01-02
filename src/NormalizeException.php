@@ -10,10 +10,7 @@ use Throwable;
 class NormalizeException extends RuntimeException
 {
 
-    /**
-     * @var string
-     */
-    private $unit;
+    private string $unit;
 
     public function __construct(string $unit, Throwable $previous = null)
     {

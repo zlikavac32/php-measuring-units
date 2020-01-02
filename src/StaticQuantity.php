@@ -11,18 +11,11 @@ final class StaticQuantity implements Quantity
 
     private const ARGS_EXCEPTION_MSG = 'Overloaded arguments mismatch. Consult PHPDoc for more info';
 
-    /**
-     * @var float
-     */
-    private $value;
-    /**
-     * @var MeasureUnit
-     */
-    private $measureUnit;
-    /**
-     * @var Runtime
-     */
-    private $runtime;
+    private float $value;
+
+    private MeasureUnit $measureUnit;
+
+    private Runtime $runtime;
 
     public function __construct(float $value, MeasureUnit $measureUnit, Runtime $runtime)
     {
