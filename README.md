@@ -1,5 +1,7 @@
 # Units of measure for PHP
 
+![Build Status](https://github.com/zlikavac32/php-measuring-units/workflows/CI/badge.svg?branch=master)
+
 Library to manage various measure units, quantities, and conversions between them.
 
 ## Table of contents
