@@ -9,23 +9,10 @@ use LogicException;
 final class StaticMeasureUnit implements NormalizedMeasureUnit
 {
 
-    private Decimal $factor;
-    /**
-     * @var MeasureUnitComponent[]
-     */
-    private array $components;
-
-    private Decimal $normalizedFactor;
-    /**
-     * @var NormalizedMeasureUnitComponent[]
-     */
-    private array $normalizedComponents;
     /**
      * @var NormalizedMeasureUnitComponent[]
      */
     private array $normalizedComponentsMap;
-
-    private Runtime $runtime;
 
     private Ratio $ratioOfOne;
 
@@ -34,16 +21,14 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
      * @param NormalizedMeasureUnitComponent[] $normalizedComponents
      */
     public function __construct(
-        Decimal $factor, array $components, Decimal $normalizedFactor, array $normalizedComponents, Runtime $runtime
+        private Decimal $factor,
+        private array $components,
+        private Decimal $normalizedFactor,
+        private array $normalizedComponents,
+        private Runtime $runtime
     ) {
-        $this->factor = $factor;
-        $this->components = $components;
-        $this->normalizedFactor = $normalizedFactor;
-        $this->normalizedComponents = $normalizedComponents;
-
         $this->normalizedComponentsMap = $this->normalizedComponentsToMap($normalizedComponents);
 
-        $this->runtime = $runtime;
         $this->ratioOfOne = StaticRatio::ONE();
     }
 
@@ -69,10 +54,7 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
         return $map;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function multiplyBy($measureUnit): MeasureUnit
+    public function multiplyBy(string|MeasureUnit $measureUnit): MeasureUnit
     {
         if (is_string($measureUnit)) {
             $measureUnit = $this->runtime->parse($measureUnit);
@@ -159,10 +141,7 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
         );
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function divideBy($measureUnit): MeasureUnit
+    public function divideBy(string|MeasureUnit $measureUnit): MeasureUnit
     {
         if (is_string($measureUnit)) {
             $measureUnit = $this->runtime->parse($measureUnit);
@@ -192,10 +171,7 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
         );
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function in($measureUnit): Ratio
+    public function in(string|MeasureUnit $measureUnit): Ratio
     {
         if ($this === $measureUnit) {
             return $this->ratioOfOne;
@@ -262,9 +238,6 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
         return $this->factor;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function components(): array
     {
         return $this->components;
@@ -275,9 +248,6 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
         return $this->normalizedFactor;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function normalizedComponents(): array
     {
         return $this->normalizedComponents;
@@ -296,12 +266,7 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
         return $this->factor . ' ' . implode('.', $this->components);
     }
 
-    /**
-     * If units represent the same dimension (dm3 is same as one liter)
-     *
-     * @param string|MeasureUnit $measureUnit
-     */
-    public function equalsTo($measureUnit, float $eps = 1e-15): bool
+    public function equalsTo(string|MeasureUnit $measureUnit, float $eps = 1e-15): bool
     {
         if (is_string($measureUnit)) {
             $measureUnit = $this->runtime->parse($measureUnit);

@@ -6,16 +6,13 @@ namespace Zlikavac32\UnitsOfMeasure;
 
 final class Transition
 {
-
-    private Decimal $ratio;
     /**
      * @var TransitionUnit[]
      */
     private array $transitionUnits;
 
-    public function __construct(Decimal $ratio, TransitionUnit ...$transitionUnits)
+    public function __construct(private Decimal $ratio, TransitionUnit ...$transitionUnits)
     {
-        $this->ratio = $ratio;
         $this->transitionUnits = $transitionUnits;
     }
 

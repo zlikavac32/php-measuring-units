@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Zlikavac32\UnitsOfMeasure;
 
-/**
- * @param float|int $f
- */
-function sign($f): int
+function sign(float|int $f): int
 {
     return $f < 0 ? -1 : ($f > 0 ? 1 : 0);
 }

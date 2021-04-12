@@ -7,21 +7,12 @@ namespace Zlikavac32\UnitsOfMeasure;
 final class StaticMeasureUnitComponent implements MeasureUnitComponent
 {
 
-    private Decimal $factor;
-
-    private MetricPrefix $metricPrefix;
-
-    private string $abbrev;
-
-    private int $exponent;
-
-    public function __construct(Decimal $factor, MetricPrefix $metricPrefix, string $abbrev, int $exponent)
-    {
-        $this->factor = $factor;
-        $this->metricPrefix = $metricPrefix;
-        $this->abbrev = $abbrev;
-        $this->exponent = $exponent;
-    }
+    public function __construct(
+        private Decimal $factor,
+        private MetricPrefix $metricPrefix,
+        private string $abbrev,
+        private int $exponent
+    ) {}
 
     public function factor(): Decimal
     {

@@ -8,19 +8,11 @@ use LogicException;
 
 final class StaticRatio implements Ratio
 {
-
-    private Decimal $ratio;
-
-    private bool $invert;
-
-    public function __construct(Decimal $ratio, bool $invert)
+    public function __construct(private Decimal $ratio, private bool $invert)
     {
         if ($ratio->equalsTo(0)) {
             throw new LogicException();
         }
-
-        $this->ratio = $ratio;
-        $this->invert = $invert;
     }
 
     public function applyTo(float $value): float

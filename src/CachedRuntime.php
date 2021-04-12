@@ -7,16 +7,13 @@ namespace Zlikavac32\UnitsOfMeasure;
 class CachedRuntime implements Runtime
 {
 
-    private Runtime $runtime;
     /**
      * @var MeasureUnit[]
      */
     private array $cache = [];
 
-    public function __construct(Runtime $runtime)
-    {
-        $this->runtime = $runtime;
-    }
+    public function __construct(private Runtime $runtime)
+    { }
 
     public function parse(string $measureUnitAsString): MeasureUnit
     {
@@ -27,10 +24,7 @@ class CachedRuntime implements Runtime
         return $this->cache[$measureUnitAsString] = $this->runtime->parse($measureUnitAsString);
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function __invoke(float $value, $measureUnit): Quantity
+    public function __invoke(float $value, string|MeasureUnit $measureUnit): Quantity
     {
         return $this->runtime->__invoke(
             $value, is_string($measureUnit) ? $this->parse($measureUnit) : $measureUnit

@@ -10,15 +10,9 @@ use Throwable;
 class ConversionException extends RuntimeException
 {
 
-    private MeasureUnit $from;
-
-    private MeasureUnit $to;
-
-    public function __construct(MeasureUnit $from, MeasureUnit $to, Throwable $previous = null)
+    public function __construct(private MeasureUnit $from, private MeasureUnit $to, Throwable $previous = null)
     {
         parent::__construct(sprintf('Unable to convert from %s to %s', $from, $to), 0, $previous);
-        $this->from = $from;
-        $this->to = $to;
     }
 
     public function from(): MeasureUnit

@@ -121,9 +121,4 @@ class NativeRuntimeSpec extends ObjectBehavior
             )
         );
     }
-
-    public function it_should_throw_exception_when_measure_unit_of_invalid_type(): void
-    {
-        $this->shouldThrow(LogicException::class)->during__invoke(2., 3);
-    }
 }

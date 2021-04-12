@@ -227,32 +227,4 @@ class StaticQuantitySpec extends ObjectBehavior
         $this->in($destUnit)
              ->shouldBeLike(new StaticQuantity(4, $destUnit->getWrappedObject(), $runtime->getWrappedObject()));
     }
-
-    public function it_should_throw_exception_for_invalid_arguments_on_add(): void
-    {
-        $this->shouldThrow(LogicException::class)->duringAdd(1);
-        $this->shouldThrow(LogicException::class)->duringAdd('not-int');
-        $this->shouldThrow(LogicException::class)->duringAdd(1, 2);
-    }
-
-    public function it_should_throw_exception_for_invalid_arguments_on_subtact(): void
-    {
-        $this->shouldThrow(LogicException::class)->duringSubtract(1);
-        $this->shouldThrow(LogicException::class)->duringSubtract('not-int');
-        $this->shouldThrow(LogicException::class)->duringSubtract(1, 2);
-    }
-
-    public function it_should_throw_exception_for_invalid_arguments_on_multiply(): void
-    {
-        $this->shouldThrow(LogicException::class)->duringMultiplyBy(1);
-        $this->shouldThrow(LogicException::class)->duringMultiplyBy('not-int');
-        $this->shouldThrow(LogicException::class)->duringMultiplyBy(1, 2);
-    }
-
-    public function it_should_throw_exception_for_invalid_arguments_on_divide(): void
-    {
-        $this->shouldThrow(LogicException::class)->duringDivideBy(1);
-        $this->shouldThrow(LogicException::class)->duringDivideBy('not-int');
-        $this->shouldThrow(LogicException::class)->duringDivideBy(1, 2);
-    }
 }

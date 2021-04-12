@@ -11,18 +11,11 @@ final class StaticQuantity implements Quantity
 
     private const ARGS_EXCEPTION_MSG = 'Overloaded arguments mismatch. Consult PHPDoc for more info';
 
-    private float $value;
-
-    private MeasureUnit $measureUnit;
-
-    private Runtime $runtime;
-
-    public function __construct(float $value, MeasureUnit $measureUnit, Runtime $runtime)
-    {
-        $this->value = $value;
-        $this->measureUnit = $measureUnit;
-        $this->runtime = $runtime;
-    }
+    public function __construct(
+        private float $value,
+        private MeasureUnit $measureUnit,
+        private Runtime $runtime
+    ) {}
 
     public function apply(callable $callable, ...$args): Quantity
     {
@@ -33,10 +26,7 @@ final class StaticQuantity implements Quantity
         );
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function add($valueOrQuantity, $measureUnit = null): Quantity
+    public function add(float|int|Quantity $valueOrQuantity, string|MeasureUnit|null $measureUnit = null): Quantity
     {
         /* @var MeasureUnit $unit */
         [$value, $unit] = $this->normalizeOverloadedArgs($valueOrQuantity, $measureUnit);
@@ -48,10 +38,7 @@ final class StaticQuantity implements Quantity
         );
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function subtract($valueOrQuantity, $measureUnit = null): Quantity
+    public function subtract(float|int|Quantity $valueOrQuantity, string|MeasureUnit|null $measureUnit = null): Quantity
     {
         /* @var MeasureUnit $unit */
         [$value, $unit] = $this->normalizeOverloadedArgs($valueOrQuantity, $measureUnit);
@@ -63,10 +50,7 @@ final class StaticQuantity implements Quantity
         );
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function multiplyBy($valueOrQuantity, $measureUnit = null): Quantity
+    public function multiplyBy(float|int|Quantity $valueOrQuantity, string|MeasureUnit|null $measureUnit = null): Quantity
     {
         /* @var MeasureUnit $unit */
         [$value, $unit] = $this->normalizeOverloadedArgs($valueOrQuantity, $measureUnit);
@@ -76,10 +60,7 @@ final class StaticQuantity implements Quantity
         );
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function divideBy($valueOrQuantity, $measureUnit = null): Quantity
+    public function divideBy(float|int|Quantity $valueOrQuantity, string|MeasureUnit|null $measureUnit = null): Quantity
     {
         /* @var MeasureUnit $unit */
         [$value, $unit] = $this->normalizeOverloadedArgs($valueOrQuantity, $measureUnit);
@@ -93,7 +74,7 @@ final class StaticQuantity implements Quantity
         );
     }
 
-    private function normalizeOverloadedArgs($valueOrQuantity, $measureUnit): array
+    private function normalizeOverloadedArgs(float|int|Quantity $valueOrQuantity, string|MeasureUnit|null $measureUnit): array
     {
         if (null === $measureUnit) {
             if (!$valueOrQuantity instanceof Quantity) {
@@ -137,10 +118,7 @@ final class StaticQuantity implements Quantity
         return $this->measureUnit;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function in($unit): Quantity
+    public function in(MeasureUnit|string $unit): Quantity
     {
         if (is_string($unit)) {
             $unit = $this->runtime->parse($unit);
@@ -160,10 +138,7 @@ final class StaticQuantity implements Quantity
         return $this->value . ' [' . $this->measureUnit . ']';
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function equalsTo($valueOrQuantity, $measureUnitOrEps = null, float $eps = 1e-9): bool
+    public function equalsTo(float|int|Quantity $valueOrQuantity, string|MeasureUnit|float|null $measureUnitOrEps = null, float $eps = 1e-9): bool
     {
         [$value, $unit] = $this->normalizeOverloadedArgs($valueOrQuantity, $measureUnitOrEps);
 

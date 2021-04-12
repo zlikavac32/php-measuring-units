@@ -6,17 +6,13 @@ namespace Zlikavac32\UnitsOfMeasure;
 
 final class TransitionUnit
 {
-
-    private string $name;
-
-    private int $exponent;
-
     private MetricPrefix $metricPrefix;
 
-    public function __construct(string $name, int $exponent = 1, ?MetricPrefix $metricPrefix = null)
-    {
-        $this->name = $name;
-        $this->exponent = $exponent;
+    public function __construct(
+        private string $name,
+        private int $exponent = 1,
+        ?MetricPrefix $metricPrefix = null
+    ) {
         $this->metricPrefix = $metricPrefix ?? MetricPrefix::NONE();
     }
 
