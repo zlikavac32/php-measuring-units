@@ -1,5 +1,9 @@
 # PHP units of measure
 
+## Unreleased
+
+* **[CHANGED]** Support only PHP 8.0
+
 ## 0.2.0 (2020-04-11)
 
 * **[CHANGED]** Minimum supported `zlikavac32/php-enum` version is 3.0.0
