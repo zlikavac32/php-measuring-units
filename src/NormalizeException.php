@@ -10,12 +10,9 @@ use Throwable;
 class NormalizeException extends RuntimeException
 {
 
-    private string $unit;
-
-    public function __construct(string $unit, Throwable $previous = null)
+    public function __construct(private string $unit, Throwable $previous = null)
     {
         parent::__construct(sprintf('Unable to normalize %s', $unit), 0, $previous);
-        $this->unit = $unit;
     }
 
     public function unit(): string

@@ -16,22 +16,17 @@ final class MapUnitNormalizer implements Normalizer
      * @var Transition[]
      */
     private Map $mapOfUnits;
-    /**
-     * @var string[]
-     */
-    private Set $baseUnits;
 
     /**
      * @param Map|Transition[] $mapOfUnits
      * @param Set|string[] $baseUnits
      */
-    public function __construct(Map $mapOfUnits, Set $baseUnits)
+    public function __construct(Map $mapOfUnits, private Set $baseUnits)
     {
         if ($baseUnits->count() === 0) {
             throw new LogicException('At least one base unit must be defined');
         }
 
-        $this->baseUnits = $baseUnits;
         $this->mapOfUnits = new Map();
 
         $this->buildMapOfUnits($mapOfUnits);

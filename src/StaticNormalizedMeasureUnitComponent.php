@@ -7,15 +7,8 @@ namespace Zlikavac32\UnitsOfMeasure;
 final class StaticNormalizedMeasureUnitComponent implements NormalizedMeasureUnitComponent
 {
 
-    private string $abbrev;
-
-    private int $exponent;
-
-    public function __construct(string $abbrev, int $exponent)
-    {
-        $this->abbrev = $abbrev;
-        $this->exponent = $exponent;
-    }
+    public function __construct(private string $abbrev, private int $exponent)
+    { }
 
     public function abbrev(): string
     {

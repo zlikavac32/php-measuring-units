@@ -10,13 +10,9 @@ use Throwable;
 class ParseException extends RuntimeException
 {
 
-    private string $measureUnit;
-
-    public function __construct(string $measureUnit, Throwable $previous = null)
+    public function __construct(private string $measureUnit, Throwable $previous = null)
     {
         parent::__construct(sprintf('Failed to parse %s', $measureUnit), 0, $previous);
-
-        $this->measureUnit = $measureUnit;
     }
 
     public function measureUnit(): string

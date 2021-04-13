@@ -9,15 +9,8 @@ use LogicException;
 final class NativeRuntime implements Runtime
 {
 
-    private Parser $parser;
-
-    private Normalizer $normalizer;
-
-    public function __construct(Parser $parser, Normalizer $normalizer)
-    {
-        $this->parser = $parser;
-        $this->normalizer = $normalizer;
-    }
+    public function __construct(private Parser $parser, private Normalizer $normalizer)
+    { }
 
     public function parse(string $measureUnitAsString): MeasureUnit
     {
@@ -53,17 +46,10 @@ final class NativeRuntime implements Runtime
         throw new MethodNotSupportedException(__METHOD__);
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function __invoke(float $value, $measureUnit): Quantity
+    public function __invoke(float $value, string|MeasureUnit $measureUnit): Quantity
     {
         if (is_string($measureUnit)) {
             $measureUnit = $this->parse($measureUnit);
-        }
-
-        if (!$measureUnit instanceof MeasureUnit) {
-            throw new LogicException(sprintf('Expected measure unit as string or instance of %s', MeasureUnit::class));
         }
 
         return new StaticQuantity($value, $measureUnit, $this);
