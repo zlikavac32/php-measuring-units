@@ -1,6 +1,6 @@
 # PHP units of measure
 
-## Unreleased
+## 0.3.0 (2021-04-13)
 
 * **[CHANGED]** Support only PHP 8.0
 
