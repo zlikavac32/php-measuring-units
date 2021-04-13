@@ -31,8 +31,8 @@ class ChainedParser implements Parser
         foreach ($this->parsers as $parser) {
             try {
                 return $parser->parse($measureUnit);
-            } catch (ParseException $e) {
-                // ignore
+            } catch (ParseException) {
+                
             }
         }
 
