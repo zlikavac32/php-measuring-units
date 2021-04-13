@@ -92,10 +92,6 @@ final class StaticQuantity implements Quantity
             $measureUnit = $this->runtime->parse($measureUnit);
         }
 
-        if (!$measureUnit instanceof MeasureUnit) {
-            throw new LogicException(self::ARGS_EXCEPTION_MSG);
-        }
-
         return [(float) $valueOrQuantity, $measureUnit];
     }
 
@@ -122,10 +118,6 @@ final class StaticQuantity implements Quantity
     {
         if (is_string($unit)) {
             $unit = $this->runtime->parse($unit);
-        }
-
-        if (!$unit instanceof MeasureUnit) {
-            throw new LogicException();
         }
 
         $ratio = $this->measureUnit->in($unit);

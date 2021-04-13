@@ -52,10 +52,6 @@ final class NativeRuntime implements Runtime
             $measureUnit = $this->parse($measureUnit);
         }
 
-        if (!$measureUnit instanceof MeasureUnit) {
-            throw new LogicException(sprintf('Expected measure unit as string or instance of %s', MeasureUnit::class));
-        }
-
         return new StaticQuantity($value, $measureUnit, $this);
     }
 

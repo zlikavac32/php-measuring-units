@@ -105,28 +105,18 @@ final class Decimal
         return $this->sign;
     }
 
-    /**
-     * @param float|int|Decimal $decimal
-     */
-    public function equalsTo($decimal, float $epsilon = 1e-15): bool
+    public function equalsTo(float|int|Decimal $decimal, float $epsilon = 1e-15): bool
     {
         return $this->compareTo($decimal, $epsilon) === 0;
     }
 
-    /**
-     * @param int|float|Decimal $decimal
-     */
-    public function compareTo($decimal, float $epsilon = 1e-15): int
+    public function compareTo(int|float|Decimal $decimal, float $epsilon = 1e-15): int
     {
         if (is_float($decimal) || is_int($decimal)) {
             [$mantisa, $exponent] = $this->normalize($decimal);
         } else {
-            if ($decimal instanceof Decimal) {
-                $mantisa = $decimal->mantisa;
-                $exponent = $decimal->exponent;
-            } else {
-                throw new LogicException();
-            }
+            $mantisa = $decimal->mantisa;
+            $exponent = $decimal->exponent;
         }
 
         $cmp = $this->exponent - $exponent;

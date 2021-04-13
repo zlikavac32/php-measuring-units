@@ -181,10 +181,6 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
             $measureUnit = $this->runtime->parse($measureUnit);
         }
 
-        if (!$measureUnit instanceof NormalizedMeasureUnit) {
-            throw $this->unitTypeNotSupportedException($measureUnit);
-        }
-
         if ($measureUnit instanceof StaticMeasureUnit) {
             $otherNormalizedComponentsMap = $measureUnit->normalizedComponentsMap;
         } else {
@@ -270,10 +266,6 @@ final class StaticMeasureUnit implements NormalizedMeasureUnit
     {
         if (is_string($measureUnit)) {
             $measureUnit = $this->runtime->parse($measureUnit);
-        }
-
-        if (!$measureUnit instanceof NormalizedMeasureUnit) {
-            throw $this->unitTypeNotSupportedException($measureUnit);
         }
 
         if (!$this->normalizedFactor->equalsTo($measureUnit->normalizedFactor(), $eps)) {
